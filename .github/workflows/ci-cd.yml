@@ -22,6 +22,7 @@ jobs:
 
   release:
     name: Publish NPM Packages
+    if: github.ref == 'refs/heads/master'
     needs: test
     runs-on: ubuntu-latest
     steps:
@@ -31,8 +32,9 @@ jobs:
         with:
           node-version: 18
           registry-url: "https://registry.npmjs.org"
-      - name: Semantic Release
-        uses: cycjimmy/semantic-release-action@v4
+      - name: Publish to NPM Packages
+        run: |
+          npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
+          npm publish --access public
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
