@@ -1,7 +1,7 @@
 {
-  "name": "screwdriver-executor-docker",
+  "name": "screwdriver-cd-executor-docker",
   "version": "8.0.0",
-  "description": "Docker Swarm Executor for Screwdriver",
+    "description": "Docker Swarm Executor for Screwdriver",
   "main": "index.js",
   "scripts": {
     "pretest": "eslint .",
@@ -9,10 +9,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/screwdriver-cd/executor-docker.git"
+    "url": "git+https://github.com/QubitPi/screwdriver-cd-executor-docker.git"
   },
-  "homepage": "https://github.com/screwdriver-cd/executor-docker",
-  "bugs": "https://github.com/screwdriver-cd/screwdriver/issues",
+  "homepage": "https://github.com/QubitPi/screwdriver-cd-executor-docker",
+  "bugs": "https://github.com/QubitPi/screwdriver-cd-executor-docker/issues",
   "keywords": [
     "screwdriver",
     "yahoo"
