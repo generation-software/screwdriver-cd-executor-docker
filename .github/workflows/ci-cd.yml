@@ -8,6 +8,10 @@ name: executor-docker CI/CD
     branches:
       - master
 
+env:
+  USER: QubitPi
+  EMAIL: jack20220723@gmail.com
+
 jobs:
   test:
     name: Tests
