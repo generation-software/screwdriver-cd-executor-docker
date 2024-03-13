@@ -77,7 +77,7 @@ jobs:
 
   slack-notification-master-commit:
     name: Send Slack Notification
-    if: github.ref != 'refs/heads/master'
+    if: github.ref == 'refs/heads/master'
     needs: release
     uses: QubitPi/hashicorp-aws/.github/workflows/slack-notification.yml@master
     with:
