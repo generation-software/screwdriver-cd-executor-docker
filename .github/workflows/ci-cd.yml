@@ -15,6 +15,9 @@ env:
 jobs:
   test:
     name: Tests
+    outputs:
+      outcome: ${{ job.status }}
+    continue-on-error: true
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -27,6 +30,9 @@ jobs:
   release:
     name: Publish NPM Packages
     if: github.ref == 'refs/heads/master'
+    outputs:
+      outcome: ${{ job.status }}
+    continue-on-error: true
     needs: test
     runs-on: ubuntu-latest
     steps:
@@ -58,3 +64,23 @@ jobs:
           npm publish --access public
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  slack-notification-pr:
+    name: Send Slack Notification
+    if: github.ref != 'refs/heads/master'
+    needs: test
+    uses: QubitPi/hashicorp-aws/.github/workflows/slack-notification.yml@master
+    with:
+      job-status: ${{ needs.test.outputs.outcome }}
+    secrets:
+      slack-webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+  slack-notification-master-commit:
+    name: Send Slack Notification
+    if: github.ref != 'refs/heads/master'
+    needs: release
+    uses: QubitPi/hashicorp-aws/.github/workflows/slack-notification.yml@master
+    with:
+      job-status: ${{ needs.release.outputs.outcome }}
+    secrets:
+      slack-webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
