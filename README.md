@@ -57,8 +57,8 @@ Code licensed under the BSD 3-Clause license. See LICENSE file for terms.
 [executor-base]: https://github.com/screwdriver-cd/executor-base
 
 [GitHub Last Commit badge]: https://img.shields.io/github/last-commit/QubitPi/screwdriver-cd-executor-docker/master?logo=github&style=for-the-badge
-[GitHub Workflow Status badge]: https://img.shields.io/github/actions/workflow/status/QubitPi/screwdriver-cd-executor-docker/ci-cd.yml?branch=master&logo=github&style=for-the-badge
-[GitHub Workflow Status URL]: https://github.com/QubitPi/screwdriver-cd-executor-docker/actions/workflows/ci-cd.yml
+[GitHub Workflow Status badge]: https://img.shields.io/github/actions/workflow/status/QubitPi/screwdriver-cd-executor-docker/ci-cd.yaml?branch=master&logo=github&style=for-the-badge
+[GitHub Workflow Status URL]: https://github.com/QubitPi/screwdriver-cd-executor-docker/actions/workflows/ci-cd.yaml
 
 [License badge]: https://img.shields.io/npm/l/screwdriver-cd-executor-docker.svg?style=for-the-badge
 
