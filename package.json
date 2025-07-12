@@ -9,10 +9,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/QubitPi/screwdriver-cd-executor-docker.git"
+    "url": "git+https://github.com/generation-software/screwdriver-cd-executor-docker.git"
   },
-  "homepage": "https://github.com/QubitPi/screwdriver-cd-executor-docker",
-  "bugs": "https://github.com/QubitPi/screwdriver-cd-executor-docker/issues",
+  "homepage": "https://github.com/generation-software/screwdriver-cd-executor-docker",
+  "bugs": "https://github.com/generation-software/screwdriver-cd-executor-docker/issues",
   "keywords": [
     "screwdriver",
     "yahoo"
@@ -20,6 +20,7 @@
   "license": "BSD-3-Clause",
   "author": "St. John Johnson <st.john.johnson@gmail.com>",
   "contributors": [
+    "Jiaqi Liu <jack20220723@gmail.com>",
     "Dao Lam <daolam112@gmail.com>",
     "Darren Matsumoto <aeneascorrupt@gmail.com>",
     "Jeremiah Wuenschel <jeremiah.wuenschel@gmail.com>",

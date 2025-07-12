@@ -1,4 +1,4 @@
-# Copyright Jiaqi Liu. All rights reserved.
+# Copyright 2025 Jiaqi Liu. All rights reserved.
 ---
 name: executor-docker CI/CD
 
@@ -15,9 +15,6 @@ env:
 jobs:
   test:
     name: Tests
-    outputs:
-      outcome: ${{ job.status }}
-    continue-on-error: true
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -30,9 +27,6 @@ jobs:
   release:
     name: Publish NPM Packages
     if: github.ref == 'refs/heads/master'
-    outputs:
-      outcome: ${{ job.status }}
-    continue-on-error: true
     needs: test
     runs-on: ubuntu-latest
     steps:
@@ -46,9 +40,9 @@ jobs:
           registry-url: "https://registry.npmjs.org"
       - name: Download auto-version bump scripts
         run: |
-            git clone https://github.com/QubitPi/hashicorp-aws.git ../hashicorp-aws
-            cp ../hashicorp-aws/.github/tag-for-release.bash .github/
-            cp ../hashicorp-aws/.github/upversion.py .github/
+            git clone git@github.com:generation-software/.github.git ../scripts
+            cp ../scripts/.github/tag-for-release.bash .github/
+            cp ../scripts/.github/upversion.py .github/
       - name: Tag for release
         run: |
             git config --global user.name '$USER'
@@ -64,23 +58,3 @@ jobs:
           npm publish --access public
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-  slack-notification-pr:
-    name: Send Slack Notification
-    if: github.ref != 'refs/heads/master'
-    needs: test
-    uses: QubitPi/hashicorp-aws/.github/workflows/slack-notification.yml@master
-    with:
-      job-status: ${{ needs.test.outputs.outcome }}
-    secrets:
-      slack-webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
-
-  slack-notification-master-commit:
-    name: Send Slack Notification
-    if: github.ref == 'refs/heads/master'
-    needs: release
-    uses: QubitPi/hashicorp-aws/.github/workflows/slack-notification.yml@master
-    with:
-      job-status: ${{ needs.release.outputs.outcome }}
-    secrets:
-      slack-webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
