@@ -40,7 +40,7 @@ jobs:
           registry-url: "https://registry.npmjs.org"
       - name: Download auto-version bump scripts
         run: |
-            git clone git@github.com:generation-software/.github.git ../scripts
+            git clone https://github.com/generation-software/.github.git ../scripts
             cp ../scripts/.github/tag-for-release.bash .github/
             cp ../scripts/.github/upversion.py .github/
       - name: Tag for release
