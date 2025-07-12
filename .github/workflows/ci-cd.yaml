@@ -41,8 +41,8 @@ jobs:
       - name: Download auto-version bump scripts
         run: |
             git clone https://github.com/generation-software/.github.git ../scripts
-            cp ../scripts/.github/tag-for-release.bash .github/
-            cp ../scripts/.github/upversion.py .github/
+            cp ../scripts/.github/version-bump/tag-for-release.bash .github/
+            cp ../scripts/.github/version-bump/upversion.py .github/
       - name: Tag for release
         run: |
             git config --global user.name '$USER'
